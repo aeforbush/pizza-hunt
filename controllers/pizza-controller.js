@@ -43,6 +43,7 @@ const pizzaController = {
   // update pizza by id || .updateOne() & .updateMany updates docs without returning them
   updatePizza({ params, body }, res) {
       // {new: true} returns the updated document
+      // the where clause is used first in mongoose, then data, then return options
     Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((dbPizzaData) => {
         if (!dbPizzaData) {
