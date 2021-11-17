@@ -1,5 +1,6 @@
 // importing the Schema constructor and model function
 const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const PizzaSchema = new Schema(
   {
@@ -12,6 +13,7 @@ const PizzaSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal)
     },
     size: {
       type: String,
@@ -27,8 +29,10 @@ const PizzaSchema = new Schema(
     ],
   },
   {
+      // tells Mongoose to use these functions
     toJSON: {
       virtuals: true,
+      getters: true
     },
     // id is set to false bc it's a virtual Mongoose returns and we don't need it.
     id: false,
