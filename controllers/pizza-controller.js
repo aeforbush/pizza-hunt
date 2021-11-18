@@ -68,7 +68,7 @@ const pizzaController = {
       .catch((err) => res.status(400).json(err));
   },
 
-  // delete pizza || this method provides a little more data unlike .deleteOne() or .deleteMany
+  // delete pizza || this method provides a little more data unlike .deleteOne() or .deleteMany //
   deletePizza({ params }, res) {
     Pizza.findOneAndDelete({ _id: params.id })
       .then((dbPizzaData) => {
