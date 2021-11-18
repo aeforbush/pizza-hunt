@@ -6,9 +6,14 @@ const PizzaSchema = new Schema(
   {
     pizzaName: {
       type: String,
+      required: 'You need to provide a pizza name.',
+      // just like JS .trim() removes white space before and after the input string
+      trim: true
     },
     createdBy: {
       type: String,
+      required: true,
+      trim: true
     },
     createdAt: {
       type: Date,
@@ -17,6 +22,9 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
+      // can't use a custom string for validate because of the enum array  || must use Mongoose validate option
+      required: true,
+      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
       default: "Large",
     },
     toppings: [],
