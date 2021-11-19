@@ -12,6 +12,7 @@ app.use(require('./routes'));
 
 // tells Mongoose which db to connect to || if MONGODB_URI exists (heroku) it will use that
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
+    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
