@@ -49,7 +49,7 @@ const CommentSchema = new Schema(
       default: Date.now,
       get: (createdAtVal) => dateFormat(createdAtVal),
     },
-    // replies are nested in comments and not reffered to
+    // replies are nested in comments and not referred to
     replies: [ReplySchema],
   },
   {
